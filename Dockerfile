@@ -9,8 +9,8 @@ VOLUME /tmp
 # Make port 8080 available to the world outside this container
 EXPOSE 8080
 
-ADD target/jenkins-0.0.1-SNAPSHOT.jar
+ADD target/jenkins-0.0.1-SNAPSHOT.jar app.jar
 
 
 # Run the jar file
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/jenkins-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
