@@ -1,9 +1,8 @@
 pipeline {
-    environment {
-        registry = "rowanf/jenkins"
-        registryCredential = "docker"
-        dockerImage = ""
-    }
+
+ environment {
+     dockerImage = ""
+  }
     agent any
 
     tools {
@@ -28,12 +27,12 @@ pipeline {
                 sh 'mvn package'
             }
         }
-/*
+
         stage('DOCKER TIME'){
             steps{
                 script {
                     dockerImage =  docker.build(registry)
-                    docker.build registry + ":$BUILD_NUMBER"
+                    docker.build "rowanf/jenkins:$BUILD_NUMBER"
                     sh 'pwd'
                 }
             }
@@ -42,15 +41,12 @@ pipeline {
         stage('DEPLOY '){
             steps{
                 script {
-                    docker.withRegistry( '', registryCredential ) {
+                    docker.withRegistry( '', "mydocker-cred" ) {
                         dockerImage.push()
                     }
                 }
             }
         }
-*/
-
-
     }
 
 
