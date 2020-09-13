@@ -31,8 +31,7 @@ pipeline {
         stage('DOCKER TIME'){
             steps{
                 script {
-                    dockerImage =  docker.build(registry)
-                    docker.build "rowanf/jenkins:$BUILD_NUMBER"
+                   dockerImage =  docker.build "rowanf/jenkins:$BUILD_NUMBER"
                     sh 'pwd'
                 }
             }
